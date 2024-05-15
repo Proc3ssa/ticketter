@@ -1,0 +1,276 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #e7e9e7;
+}
+nav {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #259969;
+  padding: 1em;
+}
+nav a {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+#logo img{
+  width:60px;
+}
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+label {
+  display: none;
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+  display: flex;
+  gap: 1em;
+}
+ul a {
+  padding: 0.5em;
+}
+.departments{
+    
+  height: fit-content;
+  margin: 20px auto;
+  width: 95%;
+  
+
+}
+
+.department{
+  margin-bottom: 10px;
+  height: 190px;
+  width: 160px;
+  display:inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px rgb(151, 152, 152);
+  
+}
+.active {
+  border-bottom: 2px solid #ffffff;
+}
+h2{
+ text-align: center;
+ margin-top: 5px;
+ margin-bottom: 20px;
+}
+.empty,.eventdetails{
+    
+  width: 100%;
+  height: 50%;
+}
+
+.eventdetails{
+  background-color: #191a1acc;
+  color: white;
+  text-align: center;
+  padding-top: 5px;
+  border-radius: 5px;
+  }
+
+  .eventdetails p{
+    font-size:larger;
+    width:100%;
+    
+  }
+
+  
+
+  button{
+    border:1px solid white;
+    padding:4px;
+    width:80px;
+    background-color: transparent;
+    color: white;
+    margin-top: 10px;
+  }
+
+  button:hover{
+    background-color: white;
+    color: black;
+    
+  }
+
+  .eventdetails h4{
+    font-weight: 100;
+    /* border: 0.2px solid white; */
+    width:fit-content;
+    height: 15px;
+    margin: 2px auto;
+    border-radius: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    
+    
+  }
+
+
+
+
+
+.container h2{
+  color: white;
+  text-align:center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-size: 40px;
+}
+.container button{
+  border: 1px solid white;
+  background-color: transparent;
+  width:90px;
+  height: 30px;
+  color:white;
+}
+.container button:hover{
+  background-color: #ffffff;
+  color: rgb(172, 12, 159);
+}
+#btn{
+  width: fit-content;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#one{
+     border: 1px solid black;
+     width:200px;
+     height: 230px;
+     float: left;
+     margin: 10px 20px;
+   }
+
+.graphs{
+  /* border: 1px solid red; */
+  width:80%;
+  margin-top: 50px ;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.visits, .sales{
+ 
+  width:40%;
+  height: 300px;
+  
+  margin-left: 50px;
+  margin-right: 50px;
+}
+#h1{
+  color: #259969;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+  
+  
+}
+footer{
+  background-color: #043d50;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  
+}
+@media screen and (max-width: 780px) {
+  .container div{
+    box-shadow: 1px 3px 4px rgb(109, 109, 109);
+    height: 130px;
+    width:130px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    color:rgba(252, 252, 252, 0)
+    
+    
+  }
+  .container {
+    width:90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container h2{
+    color: white;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    font-size: 23px;
+  }
+  .container button{
+    border: 0.6px solid white;
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: auto;
+    width:80px;
+    height: 25px;
+    color: white;
+  }
+  .container #btn{
+    
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .graphs{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .visits, .sales{
+    width:90%;
+    float: none;
+    margin-left: auto;
+    margin-bottom: 20px;
+  }
+  
+  #h1{
+    margin-top: 100px;
+    font-size: 25px;
+  }
+  
+  label {
+    display: block;
+  }
+  ul {
+    font-size: 1.2em;
+    position: absolute;
+    left: -100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #79878165;
+    gap: 2em;
+    top: 60px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    transition: 0.5s;
+  }
+  input[type="checkbox"]:checked ~ ul {
+    left: 0;
+  }
+  
+}

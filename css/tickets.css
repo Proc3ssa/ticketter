@@ -1,0 +1,185 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #e7e9e7;
+}
+nav {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #259969;
+  padding: 1em;
+}
+nav a {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+#logo img{
+  width:60px;
+}
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+label {
+  display: none;
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+  display: flex;
+  gap: 1em;
+}
+ul a {
+  padding: 0.5em;
+}
+
+.active {
+  border-bottom: 2px solid #ffffff;
+}
+#h11{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.tablediv{
+    min-height: 70vh;
+  }
+
+  table{
+    width: 50%;
+    text-align: center;
+    border: 0.3px solid gray;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #f5f7f7;
+    
+}
+button:hover{
+    background-color: #0a8a62;
+    color: white;
+    
+    width:62px;
+    height: 21px;
+}
+table th{
+    background-color: #0895c4;
+}
+
+table tr:nth-child(odd){
+    background-color: rgb(188, 198, 207);
+}
+  
+  .query{
+    width:98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding:10px;
+  }
+  .query a{
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  .query input[type='date']{
+    border-radius: 3px;
+    border: 0.5px solid gray;
+    height: 20px;
+  }
+  .query button{
+    border: none;
+    background-color: #043d50;
+    color: white;
+    border-radius: 3px;
+    width:60px;
+    height: 20px;
+  }
+
+footer{
+  background-color: #043d50;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  
+}
+@media screen and (max-width: 780px) {
+  
+ 
+  .tablediv{
+    min-height: 70vh;
+  }
+
+  table{
+    width: 90%;
+    text-align: center;
+    border: 0.3px solid gray;
+    margin: auto;
+    border-radius: 0;
+    
+}
+table th{
+    background-color: #0895c4;
+}
+
+table tr:nth-child(odd){
+    background-color: rgb(188, 198, 207);
+}
+  
+  .query{
+    width:98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding:10px;
+  }
+  .query a{
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  .query input[type='date']{
+    border-radius: 3px;
+    border: 0.5px solid gray;
+    height: 20px;
+  }
+  .query button{
+    border: none;
+    background-color: #043d50;
+    color: white;
+    border-radius: 3px;
+    width:60px;
+    height: 20px;
+  }
+  
+  label {
+    display: block;
+  }
+  ul {
+    font-size: 1.2em;
+    position: absolute;
+    left: -100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #79878165;
+    gap: 2em;
+    top: 60px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    transition: 0.5s;
+  }
+  input[type="checkbox"]:checked ~ ul {
+    left: 0;
+  }
+  
+}

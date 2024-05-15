@@ -1,0 +1,137 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #e7e9e7;
+}
+nav {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #259969;
+  padding: 1em;
+}
+nav a {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+#logo img{
+  width:60px;
+}
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+label {
+  display: none;
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+  display: flex;
+  gap: 1em;
+}
+ul a {
+  padding: 0.5em;
+}
+
+.active {
+  border-bottom: 2px solid #ffffff;
+}
+#h11{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sinfo{
+    width: fit-content;
+    margin: 20px auto;
+}
+table{
+    width: 400px;
+    text-align: center;
+}
+#figs{
+    font-size: 30px;
+}
+.graphs{
+    margin: 20px auto;
+    width:80%;
+    z-index: -10;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sales, .visits{
+    width: 300px;
+    height: 300px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+footer{
+  background-color: #043d50;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  
+}
+@media screen and (max-width: 780px) {
+  
+  .graphs{
+    width:99%;
+    /* border: 1px solid green; */
+    margin: 20px auto;
+    /* height: 80vh; */
+    display: block;
+    z-index: -2;
+  }
+  .sales, .visits{
+    width: 90%;
+    /* height: 350px;  */
+    /* border: 1px solid green; */
+    margin-bottom: 20px;
+  }
+  
+  table{
+    width: 300px;
+    text-align: center;
+}
+  
+  
+  
+  label {
+    display: block;
+  }
+  ul {
+    font-size: 1.2em;
+    position: absolute;
+    left: -100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #79878165;
+    z-index: 100;
+    gap: 2em;
+    top: 60px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    transition: 0.5s;
+  }
+  input[type="checkbox"]:checked ~ ul {
+    left: 0;
+  }
+  
+}
+
+
+
