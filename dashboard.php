@@ -189,6 +189,14 @@
         <li>
           <a href="bookings.php">Bookings</a>
         </li>
+
+        <?php
+        if($admin == "admin@tickets.com"){
+           echo '<li id="conditional">
+          <a href="addadmin.php">Add Admin</a>
+        </li> ';
+        } 
+        ?> 
         
       </ul>
     </nav>

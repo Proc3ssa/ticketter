@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/signin.css">
-    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/signin.css">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <title>singin |ticketter</title>
     <style>
         #error{
@@ -19,20 +19,21 @@
 
        
         <div class="image simage">
-            <img src="./images/logo.png" alt="e-invte logo">
-            <p>Admin -<span style="color:#259969">login</span> </p>
+            <img src="../images/logo.png" alt="e-invte logo">
+            <p>User -<span style="color:#259969">Signup</span> </p>
         </div>
 
         <div class="input">
             
             <form action="#" method="post">
-                <p style="color:red;" id="error">password or password error</p>
-                
+                <p style="color:red;" id="error">Account already exist</p>
+            <input type="text" name="name" placeholder="Name" required>   
             <input type="email" name="email" placeholder="email" required>
             <input type="password" name="password" placeholder="password" required limit="6">
             <div id="button">
-            <button type="submit" name='login'>Login</button>
+            <button type="submit" name='register'>Register</button>
             </div>
+            Already have an account? <a href="login.php">login</a>
         </form>
        
 
@@ -40,17 +41,19 @@
 
         <?php
 
-            if(isset($_POST['login'])){
-                include 'connection.php';
+            if(isset($_POST['register'])){
+                include '../connection.php';
+                $id = rand(0,9);
+                $name = $_POST['name'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 
-                $SELECT = "SELECT count(*) as adin from admin where email='$email' and password='$password'";
+                $SELECT = "SELECT count(*) as adin from users where email='$email' and password='$password'";
 
                 $query = mysqli_query($connection, $SELECT);
                 $res = mysqli_fetch_assoc($query);
 
-                if($res['adin'] != 1){
+                if($res['adin'] > 0){
 
                     echo '
                       <style>
@@ -63,9 +66,14 @@
                 }
 
                 else{
-                    session_start();
-                    $_SESSION['admin'] = $email;
-                    header("location: dashboard.php");
+
+                    $INSERT = "INSERT INTO users values($id,'$name', '$email', '$password' )";
+
+                    if(mysqli_query($connection, $INSERT)){
+                        echo '<script>alert("You have successfully created an account")</script>';
+                    }
+                    
+                    
                 }
                 
             }   

@@ -1,13 +1,17 @@
 <?php
+session_Start();
     include '../connection.php';
 
-    if(isset($_COOKIE["user"])) {
+    if(isset($_SESSION["client"])) {
         
-        $user = $_COOKIE["user"];
+        $user = $_SESSION["client"];
         
         $select = "SELECT ticket_id, date, department, numberoftickets, status, customer FROM tickets where contact = '$user'";
 
         $query = mysqli_query($connection, $select);
+    }
+    else{
+      header('location:login.php');
     } 
     
     
@@ -47,7 +51,7 @@
       </label>
       <ul>
         <li>
-          <a href="index.html" >Home</a>
+          <a href="dashboard.php" >Home</a>
         </li>
         <li>
           <a href="ticket.php" >Buy Tickets</a>

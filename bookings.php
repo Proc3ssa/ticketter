@@ -17,11 +17,13 @@
        if(isset($_GET['date'])){
         $date = $_GET['date'];
         
-
-        
           $SELECT = "SELECT *FROM booking where date = '$date'";
         
          
+       }
+       else if(isset($_GET['name'])){
+        $name = $_GET['name'];
+        $SELECT = "SELECT *FROM booking where department  LIKE '%$name%' or Customer LIKE '%$name%'";
        }
        else{
           
@@ -86,16 +88,25 @@
         
       </ul>
     </nav>
-    <h2 id="h11">Bookings</h2>
+    <h2 id="h11">Tickets</h2>
 
    <!-- query -->
    <div class="query">
         <form action="#" method="get">
-            <a for="date">Specify by date</a>
+            <a for="date">Search by date</a>
             <input type="date" name="date" id="date" required>
             
-            <button name="view" type="submit">View</button>
+            <button name="view" type="submit">Search</button>
         </form>
+
+        <form action="#" method="get">
+            <a for="date">Search by Department or Customer's name</a>
+            <input type="text" name="name" id="date" required>
+            
+            <button name="view2" type="submit">Search</button>
+        </form>
+
+        
     </div>
     <!-- table -->
     

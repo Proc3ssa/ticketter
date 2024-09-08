@@ -1,16 +1,28 @@
 <?php
+session_start();
+if(!isset($_SESSION['client'])){
+  header('location:login.php');
+}
+else{
+  
+  $client = $_SESSION['client'];
+  include '../connection.php';
+  $SELECT = "SELECT name, email FROM users WHERE email = '$client'";
+  $query = mysqli_query($connection, $SELECT);
+  $res = mysqli_fetch_assoc($query);
+}
 if(isset($_POST['submit'])){
-    include '../connection.php';
-    $name = $_POST['name'];
+   include '../connection.php';
+    $name = $res['name'];
     $department = $_POST['department'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    $contact = $_POST['contact'];
+    $contact = $res['email'];
 
     $INSERT = "INSERT INTO booking VALUES('$department', '$name', '$date', '$time', 'Not visited', '$contact')";
 
     if(mysqli_query($connection, $INSERT)){
-        setcookie("user", "$contact", time() + (10 * 365 * 24 * 60 * 60), "/");
+       
 
         echo '
           <script>alert("You have successfully booked an appointment")</script>
@@ -41,7 +53,7 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="../css/booking.css">
     <link rel="stylesheet" href="../css/ticket.css" />
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
-    <title>Appointment</title>
+    <title>Bookings</title>
 </head>
 <body>
     <main class="main">
@@ -52,13 +64,13 @@ if(isset($_POST['submit'])){
         <i class="fa-solid fa-bars"></i>
       </label>
       <ul><li>
-          <a href="./" >Home</a>
+          <a href="dashboard.php" >Home</a>
         </li>
 
         
 
         <li>
-          <a href="myappointments.php" class="">My Appointments</a>
+          <a href="myappointments.php" class="">My Bookings</a>
         </li>
 
         
@@ -72,16 +84,16 @@ if(isset($_POST['submit'])){
         <div class="top">
 
             <div class="wrapper">
-                <div><h1>Appointment</h1></div>
+                <div><h1>Booking</h1></div>
                 
             </div>
 
         <div class="input">
             <form action="#" method="post" enctype="multipart/form-data">
-            <input type="text" name="name" placeholder="Your name" required>
+            
             
             <select required name="department">
-                <option value="">--Department--</option>
+                <option value="<?php echo $res['name'];?>">--Department--</option>
                 <option value="Resturant">Resturant</option>
                 <option value="Dome">Dome</option>
                 <option value="Marriage Registry">Marriage Registry</option>
@@ -94,7 +106,7 @@ if(isset($_POST['submit'])){
             <button type="menu">Time</button>
             <input type="time" name="time" placeholder="Time" required>
 
-            <input type="text" name="contact" placeholder="Contact" required>
+           
            
             <div id="button">
             <button type="submit" name="submit">Book appointment</button>

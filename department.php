@@ -215,6 +215,8 @@
           <a href="dashboard.php">Dashboard</a>
         </li>
 
+      
+
         <li>
             <a href=<?php echo '"tickets.php?id='.$id.'"'; ?> >Tickets</a>
           </li>

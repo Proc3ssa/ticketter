@@ -1,14 +1,16 @@
 <?php
     include '../connection.php';
-
-    if(isset($_COOKIE["user"])) {
+    
+    session_start();
+    if(!isset($_SESSION['client'])){
+      header('location:login.php');
+    }
+    $client = $_SESSION['client'];
         
-        $user = $_COOKIE["user"];
-        
-        $select = "SELECT * FROM booking where contact = '$user'";
+        $select = "SELECT * FROM booking where contact = '$client'";
 
         $query = mysqli_query($connection, $select);
-    } 
+    
     
     
        
@@ -47,7 +49,7 @@
       </label>
       <ul>
         <li>
-          <a href="index.html" >Home</a>
+          <a href="dashboard.php" >Dashboard</a>
         </li>
         
 
@@ -71,40 +73,51 @@
 
        
           ?>
-    <div class="tablediv">
-        <table>
-        <tr>
+   
+       
+
+        <?php
+        
+
+        if($query -> num_rows == 0){
+
+          echo "<p>You have no booking appointments<p>";
+        }
+
+        else{ // $currentDate = date('Y-m-d H:s:i');
+          // $appointmentDate = $res['date']." ". $res[time];
+         while($res = mysqli_fetch_assoc($query)){
+
+          // $currentDate = date('Y-m-d H:s:i');
+          // $appointmentDate = $res['date']." ". $res[time];
+         
+
+            echo '
+             <div class="tablediv">
+             <table>
+             <tr>
             <th>Date </th>
+            <th>Time</th>
             <th>Department</th>
-            <th>Number of tickets</th>
             <th>Status </th>
             <th></th>
 
-        </tr>
-
-        <?php
-        if(isset($_COOKIE["user"])) {
-
-          
-          
-          
-          while($res = mysqli_fetch_assoc($query)){
-
-            echo '
+            </tr>
                 <tr>
                       <td>'.$res['Date'].'</td>
                       <td>'.$res['Time'].'</td>
                       <td>'.$res['department'].'</td>
                       
-                      <td>'.$res['Customer'].'</td>
+                      
                       <td>'.$res['status'].'</td>
                      
                       
                   </tr>
                 ';
           }
-        
         }
+        
+        
 
         ?>
 

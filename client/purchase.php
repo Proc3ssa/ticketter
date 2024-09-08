@@ -1,11 +1,21 @@
 <?php
+session_start();
+if(!isset($_SESSION)){
+  header('location:login.php');
+}
+
+$client = $_SESSION['client'];
  include '../connection.php';
+
+ $userSelect = "SELECT *FROM users where email = '$client'";
+ $userQuery = mysqli_query($connection, $userSelect);
+ $user = mysqli_fetch_assoc($userQuery);
  
  $id = $_GET['id'];
 
  $SELECT = "SELECT *FROM departments where id = $id";
  $query = $connection -> query($SELECT);
-$res = mysqli_fetch_assoc($query);
+ $res = mysqli_fetch_assoc($query);
  
  ?>
 
@@ -134,9 +144,9 @@ $res = mysqli_fetch_assoc($query);
       </div>
       <div class="amt">
         <form action="pay.php" method="GET" >
-          <input type="text" name="name" required placeholder="Name"><br/>
-          <input type="text" name="address" required placeholder="Address"><br/>
-          <input type="email" name="email" required placeholder="Email">
+          <input type="text" name="name" required placeholder="Name" value="<?php echo $user['name']?>"><br/>
+          <input type="text" name="address" required placeholder="Address" ><br/>
+          <input type="email" name="email" required placeholder="Email" value="<?php echo $user['email']?>">
         <?php echo ' <h1>GHc<input name="price" type="text" id="price" value="'.$res['price'].'"></h1>
         
         <input type="hidden" id="base" value="'.$res['price'].'">

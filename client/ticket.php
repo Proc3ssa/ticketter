@@ -38,7 +38,7 @@
         <i class="fa-solid fa-bars"></i>
       </label>
       <ul><li>
-          <a href="./" >Home</a>
+          <a href="dashboard.php" >Home</a>
         </li>
 
         <li>
