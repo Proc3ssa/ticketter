@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/signin.css">
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
-    <title>singin |ticketter</title>
+    <title>account verification |ticketter</title>
     <style>
         #error{
             display:none;
@@ -20,40 +20,69 @@
        
         <div class="image simage">
             <img src="../images/logo.png" alt="e-invte logo">
-            <p>User -<span style="color:#259969">Signup</span> </p>
+            <p>User -<span style="color:#259969">Verify number</span> </p>
         </div>
 
         <div class="input">
             
             <form action="#" method="post">
-                <p style="color:red;" id="error">Account already exist</p>
-            <input type="text" name="name" placeholder="Name" required>   
-            <input type="email" name="email" placeholder="email" required>
-            <input type="password" name="password" placeholder="password" required limit="6">
-            <div id="button">
-            <button type="submit" name='register'>Register</button>
-            </div>
-            Already have an account? <a href="login.php">login</a>
-        </form>
+                <p style="color:red;" id="error">Incorrect number</p>
+                A code has been sent to your phone, enter the code
+            <input type="number" name="code" placeholder="Enter code" required>   
+           <p></p>
+            <button type="submit" name='verify'>Verify</button>
+            
+            <center style="margin-top:30px">Did not receive code? <a href="login.php">Resend code</a></center>
+        </div>
+    </form>
        
 
         <!-- php -->
 
         <?php
 
-            if(isset($_POST['register'])){
+            session_start();
+            $userId = $_SESSION['userid'];
+            $number = $_SESSION['number'];
+            $SMS = "$number is your verification code.";
+
+
+            function replaceSpaces($text) {
+  
+                return str_replace(' ', '%20', $text);
+              }
+              
+              function new_sms($SMS, $number){
+               $url = 'https://sms.arkesel.com/sms/api?action=send-sms&api_key=dWd6Vk9xSXNkVUpTUElpR2JweUQ&to='.$number.'&from=E-ticket&sms='.$SMS.'';
+              
+               $formatedUrl = replaceSpaces($url);
+              
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $formatedUrl);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $response = curl_exec($ch);
+              
+                if ($response === false) {
+                      echo 'Error: ' . curl_error($ch);
+                      // echo '<p></p>'.$formatedUrl;
+                  }
+                curl_close($ch);
+              
+              }
+
+              new_sms($SMS, $phone);
+              
+
+
+
+
+            if(isset($_POST['verify'])){
                 include '../connection.php';
-                $id = rand(9999,10000);
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
+                
+                $code = $_POST['code'];
+               
 
-                $SELECT = "SELECT count(*) as adin from users where email='$email' and password='$password'";
-
-                $query = mysqli_query($connection, $SELECT);
-                $res = mysqli_fetch_assoc($query);
-
-                if($res['adin'] > 0){
+                if($code !=  $userId){
 
                     echo '
                       <style>
@@ -67,13 +96,14 @@
 
                 else{
 
-                    $INSERT = "INSERT INTO users values($id,'$name', '$email', '$password', 'notverified' )";
-
-                    if(mysqli_query($connection, $INSERT)){
+                    $UPDATE = "UPDATE users, SET status = 'verified' WHERE number = '$number'";
+                    if(mysqli_query($connection, $UPDATE)){
                         echo '<script>
 
+                        alert("Account has been verified.");
+
                         setTimeout(){
-                        window.location.href="smsverifiy.php",1000}
+                        windows.location.href="login.php",1000}
                         </script>';
                     }
                     else{

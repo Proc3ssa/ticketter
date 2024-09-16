@@ -29,6 +29,7 @@
                 <p style="color:red;" id="error">Account already exist</p>
             <input type="text" name="name" placeholder="Name" required>   
             <input type="email" name="email" placeholder="email" required>
+            <input type="number" name="number" placeholder="Tel. number" required>
             <input type="password" name="password" placeholder="password" required limit="6">
             <div id="button">
             <button type="submit" name='register'>Register</button>
@@ -46,6 +47,7 @@
                 $id = rand(9999,10000);
                 $name = $_POST['name'];
                 $email = $_POST['email'];
+                $number = $_POST['number'];
                 $password = $_POST['password'];
 
                 $SELECT = "SELECT count(*) as adin from users where email='$email' and password='$password'";
@@ -67,14 +69,15 @@
 
                 else{
 
-                    $INSERT = "INSERT INTO users values($id,'$name', '$email', '$password', 'notverified' )";
+                    $INSERT = "INSERT INTO users values($id,'$name', '$email', '$number', '$password', 'notverified' )";
 
                     if(mysqli_query($connection, $INSERT)){
-                        echo '<script>
+                        
+                        session_start();
 
-                        setTimeout(){
-                        window.location.href="smsverifiy.php",1000}
-                        </script>';
+                        $_SESSION['userid'] = $id;
+                        $_SESSION['number'] = $number;
+                        header('location:smsverify.php');
                     }
                     else{
                         echo '<script>
