@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/signin.css">
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
-    <title>singin |ticketter</title>
+    <title>singup |ticketter</title>
     <style>
         #error{
             display:none;
@@ -44,7 +44,7 @@
 
             if(isset($_POST['register'])){
                 include '../connection.php';
-                $id = rand(9999,10000);
+                $id = rand(9999,99999);
                 $name = $_POST['name'];
                 $email = $_POST['email'];
                 $number = $_POST['number'];

@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+$userId = $_SESSION['userid'];
+$number = $_SESSION['number'];
+$SMS = "$userId is your verification code.";
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +17,13 @@
     <link rel="stylesheet" href="../css/signin.css">
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <title>account verification |ticketter</title>
+    <script>
+    // Check if the form has been submitted
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+   </script>
+
     <style>
         #error{
             display:none;
@@ -26,13 +43,13 @@
         <div class="input">
             
             <form action="#" method="post">
-                <p style="color:red;" id="error">Incorrect number</p>
+                <p style="color:red;" id="error">Incorrect code</p>
                 A code has been sent to your phone, enter the code
             <input type="number" name="code" placeholder="Enter code" required>   
            <p></p>
             <button type="submit" name='verify'>Verify</button>
             
-            <center style="margin-top:30px">Did not receive code? <a href="login.php">Resend code</a></center>
+            <center style="margin-top:30px">Did not receive code? <a href="smsverify.php">Resend code</a></center>
         </div>
     </form>
        
@@ -41,14 +58,10 @@
 
         <?php
 
-            session_start();
-            $userId = $_SESSION['userid'];
-            $number = $_SESSION['number'];
-            $SMS = "$number is your verification code.";
+           
 
 
             function replaceSpaces($text) {
-  
                 return str_replace(' ', '%20', $text);
               }
               
@@ -62,15 +75,20 @@
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 $response = curl_exec($ch);
               
-                if ($response === false) {
+                if($response === false) {
                       echo 'Error: ' . curl_error($ch);
                       // echo '<p></p>'.$formatedUrl;
                   }
+
+                  else{
+                    // echo $formatedUrl;
+                  }
+
                 curl_close($ch);
               
               }
 
-              new_sms($SMS, $phone);
+            //   new_sms($SMS, $number);
               
 
 
@@ -96,14 +114,15 @@
 
                 else{
 
-                    $UPDATE = "UPDATE users, SET status = 'verified' WHERE number = '$number'";
+                    $UPDATE = "UPDATE users SET status = 'verified' WHERE number = '$number'";
                     if(mysqli_query($connection, $UPDATE)){
                         echo '<script>
 
                         alert("Account has been verified.");
 
-                        setTimeout(){
-                        windows.location.href="login.php",1000}
+                        
+                        window.location.href = "login.php";
+                        
                         </script>';
                     }
                     else{
