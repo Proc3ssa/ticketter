@@ -32,6 +32,7 @@ function printDiv() {
 </head>
 <body>
 
+<a href="../client/dashboard.php">Home</a>
 
 <div class="ticket" id="ticket">
   <div class="head">
