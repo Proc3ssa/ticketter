@@ -1,14 +1,58 @@
 <?php
+include '../connection.php';
 $customer = $_GET['customer'];
+$email = $_GET['email'];
 $department = $_GET['department'];
 $numberoftickets = $_GET['numberoftickets'];
 $date = $_GET['date'];
 $ticketid = $_GET['ticketid'];
+
+// 
+$SELECTUSER = "SELECT number from users where email = '$email'";
+$USERQUERY = mysqli_query($connection, $SELECTUSER);
+$USERRES = mysqli_fetch_assoc($USERQUERY);
+// 
+
+$number = $USERRES['number'];
+
 $server = $_SERVER['SERVER_NAME'];
+$LINK = "$server/ticket/index.php?customer=$customer&department=$department&numberoftickets=$numberoftickets&date=$date&ticketid=$ticketid";
+$encoded = urlencode(urldecode($LINK));
+$SMS = "You have successfully bought a ticket here is a link to your ticket%0A$encoded";
+
+
+function replaceSpaces($text) {
+  return str_replace(' ', '%20', $text);
+}
+
+function new_sms($SMS, $number){
+ $url = 'https://sms.arkesel.com/sms/api?action=send-sms&api_key=dWd6Vk9xSXNkVUpTUElpR2JweUQ&to='.$number.'&from=E-ticket&sms='.$SMS.'';
+
+ $formatedUrl = replaceSpaces($url);
+
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $formatedUrl);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $response = curl_exec($ch);
+
+  if($response === false) {
+        echo 'Error: ' . curl_error($ch);
+        // echo '<p></p>'.$formatedUrl;
+    }
+
+    else{
+      // echo $formatedUrl;
+    }
+
+  curl_close($ch);
+
+}
+
+new_sms($SMS, $number);
 
 
 ?>
-
+ 
 
 
 <!DOCTYPE html>

@@ -88,7 +88,7 @@ $SMS = "$userId is your verification code.";
               
               }
 
-            //   new_sms($SMS, $number);
+              new_sms($SMS, $number);
               
 
 

@@ -19,8 +19,7 @@ $server = $_SERVER['SERVER_NAME'];
 <?php
 
 
-// Set a cookie named "user" with value "John Doe" that lasts forever
-setcookie("user", "$email", time() + (10 * 365 * 24 * 60 * 60), "/");
+
 
 
 echo '
@@ -60,7 +59,7 @@ sendEmail();
 ';
 ?>
 
-<meta http-equiv="refresh" content="5;url=../ticket/index.php?customer=<?php echo $customer ?>&department=<?php echo $department ?>&numberoftickets=<?php echo $numberoftickets ?>&date=<?php echo $date ?>&ticketid=<?php echo $ticketid ?>">
+<meta http-equiv="refresh" content="5;url=../ticket/index.php?customer=<?php echo $customer ?>&department=<?php echo $department ?>&numberoftickets=<?php echo $numberoftickets ?>&date=<?php echo $date ?>&ticketid=<?php echo $ticketid ?>&email=<?php echo $email?>">
 <!--[if gte mso 9]>
 <xml>
   <o:OfficeDocumentSettings>
@@ -250,7 +249,7 @@ table, td { color: #000000; } @media (max-width: 480px) { #u_content_heading_1 .
         
   <div class="v-text-align" style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="line-height: 140%;">You have successfully purchased a ticket.</p>
-<p style="line-height: 140%;">Wait for your ticket to load. A copy will be sent to your mail.</p>
+<p style="line-height: 140%;">Wait for your ticket to load. A copy will be sent to your mail and sms.</p>
   </div>
 
       </td>
