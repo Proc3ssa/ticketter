@@ -31,7 +31,9 @@
             <input type="email" name="email" placeholder="email" required>
             <input type="password" name="password" placeholder="password" required limit="6">
             <div id="button">
-            <button type="submit" name='login'>Login</button>
+            <button type="submit" name='login'>Login</button><p></p>
+            
+            
             </div>
         </form>
        
