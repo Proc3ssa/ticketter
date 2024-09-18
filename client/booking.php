@@ -13,13 +13,14 @@ else{
 }
 if(isset($_POST['submit'])){
    include '../connection.php';
+   $id = rand(999,10000);
     $name = $res['name'];
     $department = $_POST['department'];
     $date = $_POST['date'];
     $time = $_POST['time'];
     $contact = $res['email'];
 
-    $INSERT = "INSERT INTO booking VALUES('$department', '$name', '$date', '$time', 'Not visited', '$contact')";
+    $INSERT = "INSERT INTO booking VALUES('$department', '$name', '$date', '$time', 'Not visited', '$contact', $id)";
 
     if(mysqli_query($connection, $INSERT)){
        

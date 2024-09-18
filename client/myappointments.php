@@ -66,22 +66,22 @@
        
     </div>
     <!-- table -->
-    
-        
-    
-    <?php
+    <div class="tablediv">
+    <table>
+    <tr>
+            <th>Date </th>
+            <th>Time</th>
+            <th>Department</th>
+            <th>Status </th>
+            <th></th>
 
-       
-          ?>
-   
-       
-
+            </tr>
         <?php
         
 
         if($query -> num_rows == 0){
 
-          echo "<p>You have no booking appointments<p>";
+          echo "<p>You have no bookings<p>";
         }
 
         else{ // $currentDate = date('Y-m-d H:s:i');
@@ -93,16 +93,8 @@
          
 
             echo '
-             <div class="tablediv">
-             <table>
-             <tr>
-            <th>Date </th>
-            <th>Time</th>
-            <th>Department</th>
-            <th>Status </th>
-            <th></th>
-
-            </tr>
+             
+             
                 <tr>
                       <td>'.$res['Date'].'</td>
                       <td>'.$res['Time'].'</td>
