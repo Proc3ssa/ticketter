@@ -13,7 +13,7 @@ else{
 }
 if(isset($_POST['submit'])){
    include '../connection.php';
-   $id = rand(999,10000);
+   $id = rand(100,1000);
     $name = $res['name'];
     $department = $_POST['department'];
     $date = $_POST['date'];

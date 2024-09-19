@@ -69,6 +69,7 @@
     <div class="tablediv">
     <table>
     <tr>
+    <th>Id </th>
             <th>Date </th>
             <th>Time</th>
             <th>Department</th>
@@ -96,6 +97,7 @@
              
              
                 <tr>
+                      <td>'.$res['id'].'</td>
                       <td>'.$res['Date'].'</td>
                       <td>'.$res['Time'].'</td>
                       <td>'.$res['department'].'</td>

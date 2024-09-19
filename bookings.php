@@ -114,7 +114,7 @@
     
     <?php
           if($query -> num_rows == 0){
-            echo "<p style='text-align:center; margin-bottom:200px'>No records for said date</p>";
+            echo "<p style='text-align:center; margin-bottom:200px'>No records found for ".$_GET['name']."</p>";
           }
 
           ?>
