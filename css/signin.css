@@ -85,3 +85,53 @@ footer #image{
 .text, #image{
     margin-top: 10px;
 }
+
+.users{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    text-wrap: wrap;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.user{
+    width: 200px;
+    height: 200px;
+    background-color: #DDDADA;
+    box-shadow: 0 3px 6px gray;
+    border-radius: 10px;
+    margin-left: 10px ;
+    background-image:  url(../images/user);
+    background-repeat: round;
+    display: flex;
+    justify-content: center;
+    align-items:end;
+    margin-top:20px;
+}
+.user:hover{
+    width: 202px;
+    height: 202px;
+    background-color: #a19f9f;
+    box-shadow: 0 3px 6px gray;
+}
+
+a{
+    text-decoration: none;
+}
+
+.userdata{
+    width: fit-content;
+    margin: auto;
+}
+
+th{
+    background-color: #13223A;
+    color: white;
+    min-width: 200px;
+    height: 30px;
+}
+ tr:nth-child(odd){
+    background-color: #a19f9f;
+}
