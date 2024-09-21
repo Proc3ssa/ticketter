@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors", 0);
 include '../connection.php';
 $customer = $_GET['customer'];
 $email = $_GET['email'];
@@ -71,8 +72,12 @@ function printDiv() {
     print();
 }
 
-
+function goBack() {
+    window.history.back();
+}
+</script>
   </script>
+  
 </head>
 <body>
 

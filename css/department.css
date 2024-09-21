@@ -68,6 +68,9 @@ table{
     align-items: center;
     justify-content: center;
 }
+.back{
+  color:black;
+}
 
 .sales, .visits{
     width: 300px;

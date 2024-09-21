@@ -3,7 +3,9 @@ body{
     width: fit-content;
     margin: 20px auto;
 }
-
+.back{
+    color:black;
+  }
 .ticket{
     border: 1px solid rgb(3, 146, 79);
     border-radius: 10px;

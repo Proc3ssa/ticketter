@@ -117,6 +117,9 @@ table tr:nth-child(odd){
     background-color: #0a8a62;
     color: white;
   }
+  .back{
+    color:black;
+  }
   .boks{
     background-color: #831008;
     color: white;

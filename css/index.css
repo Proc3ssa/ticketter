@@ -11,6 +11,9 @@ main{
     max-width: 400px;
     
 }
+.back{
+    color:black;
+  }
 .image , .footer{
     text-align: center;
     justify-content: center;
