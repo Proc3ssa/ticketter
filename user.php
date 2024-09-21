@@ -63,7 +63,7 @@ function goBack() {
                 <th>Department</th>
                 <th>Number of tickets</th>
                 <th>Status </th>
-                <th>-</th>
+                <th>Ticket</th>
             </tr>
         ';
 
@@ -112,7 +112,7 @@ function goBack() {
                 <th>Department</th>
                 <th>Time</th>
                 <th>Status </th>
-                <th>-</th>
+                
             </tr>
     ';
 
@@ -121,9 +121,9 @@ function goBack() {
             
            echo '
            <tr> 
-           <td>'.$res['date'].'</td>
+           <td>'.$res['Date'].'</td>
             <td>'.$res['department'].'</td>
-             <td>'.$res['time'].'</td>
+             <td>'.$res['Time'].'</td>
               <td>'.$res['status'].'</td>
 
                
