@@ -57,6 +57,9 @@ else{ // id error
 </head>
 <body>
     <main class="main">
+        <a href="dashboard.php"><button>
+            dashboard
+        </button></a>
         <div class="top">
 
        

@@ -10,6 +10,12 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dashboard</title>
     <!-- Font Awesome Icons -->
@@ -50,6 +56,7 @@ session_start();
         
       </ul>
     </nav>
+    
     <h2 id="h11">Dashboard</h2>
 
    <!-- query -->

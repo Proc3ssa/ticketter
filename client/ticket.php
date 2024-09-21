@@ -28,7 +28,12 @@
     <link rel="stylesheet" href="../css/ticket.css" />
 
   
-
+    <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
   </head>
   <body>
     <nav>
@@ -38,7 +43,7 @@
         <i class="fa-solid fa-bars"></i>
       </label>
       <ul><li>
-          <a href="dashboard.php" >Home</a>
+          
         </li>
 
         <li>
@@ -56,6 +61,8 @@
         
       </ul>
     </nav>
+    <button class="back" onclick="goBack()"><- Back</button>
+
     <h2>Buy Your Tickets</h2>
     
     <div class="departments">

@@ -38,7 +38,12 @@ if(isset($_GET['pay'])){
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../css/pay.css" /><link rel="stylesheet" href="./style.css">
-
+<script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -47,6 +52,7 @@ if(isset($_GET['pay'])){
     <h1>Checkout</h1><hr/>
     <img src="../images/logo.png"/>
   </header>
+  <button class="back" onclick="goBack()"><- Back</button>
 
   <form action="#" class="form" method="get">
     <div>

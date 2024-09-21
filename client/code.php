@@ -42,7 +42,12 @@ function replaceSpaces($text) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+<script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/signin.css">
@@ -57,7 +62,7 @@ function replaceSpaces($text) {
 <body>
     <main class="main">
         <div class="top">
-
+        <button class="back" onclick="goBack()"><- Back</button>
        
         <div class="image simage">
             <img src="../images/logo.png" alt="e-invte logo">

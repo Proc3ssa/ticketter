@@ -26,12 +26,18 @@ session_start();
     <link rel="stylesheet" href="../css/signin.css">
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <title>users |ticketter</title>
+    <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
     
 </head>
 <body>
     <main class="main">
         <div class="top">
-
+        <button class="back" onclick="goBack()"><- Back</button>
        
         <div class="imag image">
             

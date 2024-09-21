@@ -13,20 +13,20 @@ else{
 }
 if(isset($_POST['submit'])){
    include '../connection.php';
-   $id = rand(100,1000);
+   $id = rand(1000,9999);
     $name = $res['name'];
     $department = $_POST['department'];
     $date = $_POST['date'];
     $time = $_POST['time'];
     $contact = $res['email'];
 
-    $INSERT = "INSERT INTO booking VALUES('$department', '$name', '$date', '$time', 'Not visited', '$contact', $id)";
+    $INSERT = "INSERT INTO booking VALUES('$department', '$name', '$date', '$time', 'Pending Approval', '$contact', $id)";
 
     if(mysqli_query($connection, $INSERT)){
        
 
         echo '
-          <script>alert("You have successfully booked an appointment")</script>
+          <script>alert("You have successfully booked an appointment. waiting for approval")</script>
         ';
     }
     else{
@@ -49,6 +49,12 @@ if(isset($_POST['submit'])){
     }
 
 </script>
+<script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/booking.css">
@@ -58,6 +64,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <main class="main">
+    
     <nav>
       <a href="#home" id="logo"><img src="../images/logo.png"></a>
       
@@ -81,6 +88,7 @@ if(isset($_POST['submit'])){
         
       </ul>
     </nav>
+    <button class="back" onclick="goBack()"><- Back</button>
 
         <div class="top">
 

@@ -68,7 +68,12 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./css/tickets.css" />
 
-   
+    <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
 
   </head>
   <body>
@@ -92,6 +97,7 @@
         
       </ul>
     </nav>
+    <button class="back" onclick="goBack()"><- Back</button>
     <h2 id="h11">Tickets Info. <?php echo $resD['name']?></h2>
 
    <!-- query -->

@@ -50,7 +50,7 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ticktes</title>
+    <title>Bookings</title>
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
@@ -67,7 +67,12 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./css/tickets.css" />
 
-   
+    <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
 
   </head>
   <body>
@@ -83,11 +88,12 @@
         </li>
 
         <li>
-            <a href="tickets.html" class="active">Tickets</a>
+            <a href="tickets.html" class="active">Bookings</a>
           </li>
         
       </ul>
     </nav>
+    <button class="back" onclick="goBack()"><- Back</button>
     <h2 id="h11">Tickets</h2>
 
    <!-- query -->
@@ -125,8 +131,9 @@
             <th>Customer</th>
             <th>Date </th>
             <th>Time</th>
-            <th>Status </th>
+            
             <th>Contact</th>
+            <th>Status</th>
         </tr>
 
         <?php
@@ -141,8 +148,9 @@
                       <td>'.$res['Date'].'</td>
                       <td>'.$res['Time'].'</td>
 
-                      <td>'.$res['status'].'</td>
+                      
                       <td>'.$res['contact'].'</td>
+                      <td><a href="setstatus.php?bookingid='.$res['id'].'">'.$res['status'].'</a></td>
                   </tr>
                 ';
           }

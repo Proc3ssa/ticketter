@@ -198,6 +198,12 @@
       chart.draw(data, options);
     }
     </script>
+    <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
 
   </head>
   <body>
@@ -223,6 +229,7 @@
         
       </ul>
     </nav>
+    <button class="back" onclick="goBack()"><- Back</button>
     <h2 id="h11"><?php echo $name?></h2>
 
     <div class="sinfo">

@@ -39,7 +39,12 @@ session_Start();
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../css/tickets.css" />
 
-   
+    <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
 
   </head>
   <body>
@@ -63,6 +68,7 @@ session_Start();
         
       </ul>
     </nav>
+    <button class="back" onclick="goBack()"><- Back</button>
     <h2 id="h11">My Tickets</h2>
 
    <!-- query -->

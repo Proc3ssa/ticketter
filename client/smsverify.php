@@ -29,10 +29,17 @@ $SMS = "$userId is your verification code.";
             display:none;
         }
     </style>
+    <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
 </head>
 <body>
     <main class="main">
         <div class="top">
+        <button class="back" onclick="goBack()"><- Back</button>
 
        
         <div class="image simage">

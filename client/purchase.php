@@ -22,6 +22,12 @@ $client = $_SESSION['client'];
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <script>
+// Function to go to the previous page
+function goBack() {
+    window.history.back();
+}
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buy ticket</title>
     <!-- Font Awesome Icons -->
@@ -108,6 +114,8 @@ $client = $_SESSION['client'];
         
       </ul>
     </nav>
+    <button class="back" onclick="goBack()"><- Back</button>
+
     <h2 align="center">Purchase</h2>
     
     <div class="departments">
