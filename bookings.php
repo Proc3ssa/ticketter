@@ -72,11 +72,20 @@
 function goBack() {
     window.history.back();
 }
+
+function printDiv(){
+  document.getElementById('hide').style.display = "none";
+  document.getElementById('hide2').style.display = "none";
+  document.getElementById('hide3').style.display = "none";
+  print();
+}
+
 </script>
+
 
   </head>
   <body>
-    <nav>
+    <nav id="hide">
       <a href="#home" id="logo"><img src="./images/logo.png"></a>
       <input type="checkbox" id="hamburger" />
       <label for="hamburger">
@@ -84,7 +93,7 @@ function goBack() {
       </label>
       <ul>
         <li>
-          <a href="dashboard.php" >Dashboard</a>
+          <a href="dashboard.php" >Events</a>
         </li>
 
         <li>
@@ -94,19 +103,19 @@ function goBack() {
       </ul>
     </nav>
     <button class="back" onclick="goBack()"><- Back</button>
-    <h2 id="h11">Tickets</h2>
+    <h2 id="h11">Bookings</h2>
 
    <!-- query -->
-   <div class="query">
-        <form action="#" method="get">
+   <div class="query" id="hide2">
+        <form action="#" method="get" id="notprint">
             <a for="date">Search by date</a>
             <input type="date" name="date" id="date" required>
             
             <button name="view" type="submit">Search</button>
         </form>
 
-        <form action="#" method="get">
-            <a for="date">Search by Department or Customer's name</a>
+        <form action="#" method="get" id="notprint">
+            <a for="date">Search by Events or Customer's name</a>
             <input type="text" name="name" id="date" required>
             
             <button name="view2" type="submit">Search</button>
@@ -124,10 +133,10 @@ function goBack() {
           }
 
           ?>
-    <div class="tablediv">
-        <table>
+    <div class="tablediv" id="content-to-print">
+        <table >
         <tr>
-            <th>Department</th>
+            <th>Event</th>
             <th>Customer</th>
             <th>Date </th>
             <th>Time</th>
@@ -161,6 +170,7 @@ function goBack() {
 
         
     </table>
+    <center id="hide3" style="margin-top: 10px;"><button  style="width:90px; height:30px; border:none; color:white; background-color:blue; border-radius:5px" onclick="printDiv()">Print</button></center>
     </div>
     
   

@@ -57,7 +57,7 @@ function goBack() {
       </ul>
     </nav>
     
-    <h2 id="h11">Dashboard</h2>
+    <h2 id="h11">Events</h2>
 
    <!-- query -->
    <div class="quer">

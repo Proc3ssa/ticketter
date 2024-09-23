@@ -2,6 +2,8 @@
  include 'connection.php';
  session_start();
      $admin = $_SESSION['admin'];
+     $title = $_SESSION['title'];
+    
      if($admin == ""){
        // echo '<script>alert("'.$admin.'")</script>';
      header("location: signin.php");
@@ -60,6 +62,18 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Department</title>
+
+    <?php 
+      if($title == "security"){
+        echo '
+        <style>
+        .shide{display:none}
+        
+        </style>
+        ';
+      }
+    
+    ?>
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
@@ -175,14 +189,14 @@
   </head>
   <body>
     <nav>
-      <a href="#home" id="logo"><img src="./images/logo.png"></a>
+      <a href="#home" id="logo"><img src="./images/logo.png"></a><p style="color:white"><?php echo $title?></p>
       <input type="checkbox" id="hamburger" />
       <label for="hamburger">
         <i class="fa-solid fa-bars"></i>
       </label>
       <ul>
         <li>
-          <a href="#home" class="active">Dashboard</a>
+          <a href="#home" class="active">Events</a>
         </li>
 
 
@@ -193,18 +207,18 @@
         <?php
         if($admin == "admin@tickets.com"){
            echo '<li id="conditional">
-          <a href="addadmin.php">Add Admin</a>
+          <a href="addadmin.php">Add Users</a>
         </li> ';
         } 
         ?> 
 
-<li>
-          <a href="users.php">Users</a>
+       <li class="shide">
+          <a href="users.php">Customers</a>
         </li>
         
       </ul>
     </nav>
-    <h2>Departments</h2>
+    <h2>Events</h2>
     
     <div class="departments">
 
@@ -249,17 +263,17 @@
 
 
     <!-- graphs -->
- <h1 id="h1">Metrics - 2024</h1>
-    <div class="graphs">
+ <h1 id="h1" class="shide">Metrics - 2024</h1>
+    <div class="graphs shide">
      
       <div class="visits" id="visits">
-        <h2>Visits</h2>
+        <h2 class="shide">Visits</h2>
 
       </div>
 
 
       <div class="sales" id="sales">
-        <h2>Sales</h2>
+        <h2 class="shide">Sales</h2>
 
       </div>
     </div>

@@ -37,6 +37,7 @@ CREATE TABLE `admin` (
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` VALUES
+(0,'admin2@gmail.com','11111'),
 (1,'admin@tickets.com','11111'),
 (4,'pro@g.com','11111');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
@@ -54,7 +55,7 @@ CREATE TABLE `booking` (
   `Customer` varchar(50) DEFAULT NULL,
   `Date` date DEFAULT NULL,
   `Time` time DEFAULT NULL,
-  `status` varchar(15) DEFAULT NULL,
+  `status` varchar(30) DEFAULT NULL,
   `contact` varchar(40) DEFAULT NULL,
   `id` int(10) unsigned zerofill NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -67,16 +68,9 @@ CREATE TABLE `booking` (
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
 INSERT INTO `booking` VALUES
-('Swimming Pool','Jay White','2024-03-09','04:09:09','Visited','0443556456',0000000000),
-('Space Rental','Faisal Halid','2024-05-15','09:56:00','Not visited','cshfaisalhalid@gmail.com',0000000000),
-('Resturant','Faisal Halid','2024-05-22','10:20:00','Not visited','cshfaisalhalid@gmail.com',0000000000),
-('Resturant','Faisal Halid','2024-05-22','10:20:00','Not visited','cshfaisalhalid@gmail.com',0000000000),
-('Swimming Pool','Jay White','2024-03-09','04:09:09','Visited','0443556456',0000000000),
-('Space Rental','Faisal Halid','2024-05-15','09:56:00','Not visited','cshfaisalhalid@gmail.com',0000000000),
-('Resturant','Faisal Halid','2024-05-22','10:20:00','Not visited','cshfaisalhalid@gmail.com',0000000000),
-('Resturant','Faisal Halid','2024-05-22','10:20:00','Not visited','cshfaisalhalid@gmail.com',0000000000),
-('Dome','Faisal','2024-09-13','08:15:00','Not visited','test@gmail.com',0000000000),
-('Marriage Registry','test1','2024-09-26','20:52:00','Not visited','test@gmail.com',0000004784);
+('Marriage Registry','test1','2024-09-26','20:52:00','Approved','test@gmail.com',0000004784),
+('Marriage Registry','Tester','2024-09-22','23:53:00','Declined','pros3sa@gmail.com',0000003189),
+('Dome','Tester','2024-09-17','23:30:00','Pending Approval','pros3sa@gmail.com',0000008967);
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,6 +154,7 @@ INSERT INTO `tickets` VALUES
 (408404,1,'Slide','Notvisited',125,'Faisal Halid','2024-05-08','Kumasi','cshfaisalhalid@gmail.com',5),
 (441903,5,'Table tennis','Notvisited',75,'Faisal Halid','2024-05-07','Kumasi','cshfaisalhalid@gmail.com',3),
 (442141,6,'Snooker','Notvisited',25,'test1','2024-09-16','kumasi','test@gmail.com',1),
+(466830,4,'Mini golf ','Notvisited',25,'Tester','2024-09-21','kumas','pros3sa@gmail.com',1),
 (467559,6,'Snooker','Notvisited',25,'test1','2024-09-16','kumasi','test@gmail.com',1),
 (476309,3,'Trampoline','Notvisited',25,'Faisal Halid','2024-05-08','Kumasi','cshfaisalhalid@gmail.com',1),
 (480893,6,'Snooker','Notvisited',25,'test1','2024-09-16','kumasi','test@gmail.com',1),
@@ -193,7 +188,7 @@ CREATE TABLE `users` (
   `password` varchar(40) DEFAULT NULL,
   `status` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65109 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=765577 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,8 +198,7 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES
-(17690,'test1','test@gmail.com','0553226020','11111','verified'),
-(37125,'name','email@gmail.com','0553226020','11111','verified');
+(69745,'Tester','pros3sa@gmail.com','0553226020','11111','verified');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -217,4 +211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-19 11:45:42
+-- Dump completed on 2024-09-21 22:24:52

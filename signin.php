@@ -47,12 +47,13 @@
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 
-                $SELECT = "SELECT count(*) as adin from admin where email='$email' and password='$password'";
+                $SELECT = "SELECT *FROM admin where email='$email' and password='$password'";
 
                 $query = mysqli_query($connection, $SELECT);
                 $res = mysqli_fetch_assoc($query);
-
-                if($res['adin'] != 1){
+                 
+                $title = $res['title'];
+                if($query -> num_rows != 1){
 
                     echo '
                       <style>
@@ -67,6 +68,7 @@
                 else{
                     session_start();
                     $_SESSION['admin'] = $email;
+                    $_SESSION['title'] = $title;
                     header("location: dashboard.php");
                 }
                 

@@ -20,13 +20,27 @@ if(isset($_POST['submit'])){
     $time = $_POST['time'];
     $contact = $res['email'];
 
-    $INSERT = "INSERT INTO booking VALUES('$department', '$name', '$date', '$time', 'Pending Approval', '$contact', $id)";
+    // time verification 
+    $timDatf = "SELECT *FROM booking WHERE Date = '$date' and Time = '$time' and department = '$department'";
+    $timQ = mysqli_query($connection, $timDatf);
+
+    if($timQ -> num_rows == 0){
+      $status = "Pending Approval";
+      $message = "You have successfully booked an appointment. waiting for approval";
+    }
+
+    else{
+      $status = "The place is already booked. Waiting for approval";
+      $message = "The place is already booked. waiting for approval";
+    }
+
+    $INSERT = "INSERT INTO booking VALUES('$department', '$name', '$date', '$time', '$status', '$contact', $id)";
 
     if(mysqli_query($connection, $INSERT)){
        
 
         echo '
-          <script>alert("You have successfully booked an appointment. waiting for approval")</script>
+          <script>alert("'.$message.'")</script>
         ';
     }
     else{
@@ -111,9 +125,21 @@ function goBack() {
             </select>
     
             <button type="menu">Date</button>
-            <input type="date" name="date"  required>
-            <button type="menu">Time</button>
-            <input type="time" name="time" placeholder="Time" required>
+            <input type="date" name="date" min="<?php echo date('Y-m-d')?>" required>
+
+            <b style="margin-top:10px">Time</b><p></p>
+             <input type="radio" value="7am-11am" id="id" name="time" required style="width:20px">
+            <label style="color:black;" for="time">7am-11am - morning</label>
+           
+            <p></p>
+            <input type="radio" value="12pm-5pm" id="id" name="time" required style="width:20px">
+            <label style="color:black;" for="time"> 12pm-5pm - afternoon</label>
+            
+            <p></p>
+            <input type="radio" value="6pm-11pm" id="id" name="time" required style="width:20px">
+            <label style="color:black;" for="time">6pm-11pm - night</label>
+            
+
 
            
            

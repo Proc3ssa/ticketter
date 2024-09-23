@@ -27,7 +27,7 @@ input[type="checkbox"] {
   -webkit-appearance: none;
 }
 label {
-  display: none;
+  
   cursor: pointer;
 }
 ul {

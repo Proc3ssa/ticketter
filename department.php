@@ -2,6 +2,7 @@
  include 'connection.php';
  session_start();
      $admin = $_SESSION['admin'];
+     $title = $_SESSION['title'];
      if($admin == ""){
        // echo '<script>alert("'.$admin.'")</script>';
      header("location: signin.php");
@@ -69,6 +70,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <?php 
+      if($title == "security"){
+        echo '
+        <style>
+        .shide{display:none}
+        
+        </style>
+        ';
+      }
+      ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Department</title>
     <!-- Font Awesome Icons -->
@@ -208,7 +219,7 @@ function goBack() {
   </head>
   <body>
     <nav>
-      <a href="#home" id="logo"><img src="./images/logo.png"></a>
+      <a href="#home" id="logo"><img src="./images/logo.png"></a><p style="color:white"><?php echo $title?></p>
       <input type="checkbox" id="hamburger" />
       <label for="hamburger">
         <i class="fa-solid fa-bars"></i>
@@ -232,7 +243,7 @@ function goBack() {
     <button class="back" onclick="goBack()"><- Back</button>
     <h2 id="h11"><?php echo $name?></h2>
 
-    <div class="sinfo">
+    <div class="sinfo shide">
         <table>
             <tr>
                 <td>Visits this month</td>
@@ -246,9 +257,9 @@ function goBack() {
     </div>
 
     <!-- graphs -->
-    <div class="graphs">
-        <div class="visits" id="visits"></div>
-        <div class="sales" id="sales"></div>
+    <div class="graphs shide">
+        <div class="visits shide" id="visits"></div>
+        <div class="sales shide" id="sales"></div>
     </div>
 
   

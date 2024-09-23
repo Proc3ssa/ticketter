@@ -34,7 +34,15 @@
         <div class="input">
             
             <form action="#" method="post">
-                <p style="color:red;" id="error">Admin Already exist</p>
+            <p style="color:red;" id="error">Admin Already exist</p>
+
+            <label for="title">Title</label><p></p>
+            <select name="title" required>
+                <option value="">--select--</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="accountant">Accountant</option>
+                <option value="security">Security</option>
+            </select>
                 
             <input type="email" name="email" placeholder="Enter email" required>
             <input type="password" name="password" placeholder="password" required limit="6">
@@ -51,6 +59,7 @@
             if(isset($_POST['add'])){
                 include 'connection.php';
                 $email = $_POST['email'];
+                $title = $_POST['title'];
                 $password = $_POST['password'];
                 $id = rand(0,9);
 
@@ -72,7 +81,7 @@
                 }
 
                 else{
-                   $INSERT = "INSERT INTO admin values($id, '$email', '$password')";
+                   $INSERT = "INSERT INTO admin values($id, '$title', '$email', '$password')";
 
                    if(mysqli_query($connection, $INSERT)){
                       echo "<script>alert('New Admin added')</script>";
