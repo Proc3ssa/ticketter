@@ -115,7 +115,7 @@ function printDiv(){
         </form>
 
         <form action="#" method="get" id="notprint">
-            <a for="date">Search by Events or Customer's name</a>
+            <a for="date">Search by Events</a>
             <input type="text" name="name" id="date" required>
             
             <button name="view2" type="submit">Search</button>
@@ -146,8 +146,34 @@ function printDiv(){
         </tr>
 
         <?php
+
+function compareDates($providedDate) {
+  
+  $currentDate = new DateTime();
+  
+ 
+  $providedDate = new DateTime($providedDate);
+  
+  
+  if ($providedDate < $currentDate) {
+      return "Date passed";
+  } else {
+      return "date not passed";
+  }
+}
+
+
           
           while($res = mysqli_fetch_assoc($query)){
+
+            $datStatus = compareDates($res['Date']);
+
+            if($datStatus == 'Date passed'){
+              $STATUS = $datStatus;
+            }
+            else{
+              $STATUS = '<a href="setstatus.php?bookingid='.$res['id'].'">'.$res['status'].'</a>';
+            }
 
             echo '
                 <tr>
@@ -159,7 +185,7 @@ function printDiv(){
 
                       
                       <td>'.$res['contact'].'</td>
-                      <td><a href="setstatus.php?bookingid='.$res['id'].'">'.$res['status'].'</a></td>
+                      <td>'.$STATUS.'</td>
                   </tr>
                 ';
           }

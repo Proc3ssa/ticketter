@@ -9,11 +9,18 @@
         
        }
 
-       $id = $_GET['id'];
+       if($_GET['id'] != ""){
+
+        $id = $_GET['id'];
         $DEPARTMENT = "SELECT name from departments where id = $id limit 1";
 
         $Dquery = mysqli_query($connection, $DEPARTMENT);
         $resD = mysqli_fetch_assoc($Dquery);
+       }
+
+       $title = $_SESSION['title'];
+
+        
 
         // echo $DEPARTMENT;
 
@@ -22,13 +29,26 @@
         $id = $_GET['id'];
 
         
-          $SELECT = "SELECT status, customer, numberoftickets, contact, date, department  FROM tickets where date = '$date' and id = $id";
+          $SELECT = "SELECT status, customer, numberoftickets, contact, date, department  FROM tickets where date = '$date' and id = $id"; 
+
+          if($title == "accountant"){
+            $SELECT = "SELECT status, customer, numberoftickets, contact, date, department  FROM tickets where date = '$date'"; 
+          }
         
          
        }
-       else{
+       elseif(isset($_GET['name'])){
+        $name = $_GET['name'];
+        $id = $_GET['id'];
+        $SELECT = "SELECT status, customer, numberoftickets, contact, date, department  FROM tickets where customer LIKE '%$name%' or contact LIKE '%$name%' or department LIKE '%$name%' and id = $id";
+       }
+       elseif(isset($_GET['id'])){
           $id = $_GET['id'];
-          $SELECT = "SELECT status, customer, numberoftickets, contact, date, department FROM tickets where id = $id";
+          $SELECT = "SELECT status, ticket_id, customer, numberoftickets, contact, date, department FROM tickets where id = $id";
+         }
+
+         else{
+          $SELECT = "SELECT status, ticket_id, customer, numberoftickets, contact, date, department FROM tickets";
          }
 
        $query = mysqli_query($connection, $SELECT);
@@ -78,14 +98,14 @@ function goBack() {
   </head>
   <body>
     <nav>
-      <a href="#home" id="logo"><img src="./images/logo.png"></a>
+      <a href="#home" id="logo"><img src="./images/logo.png"></a> <b style="color:white"><?php  echo $_SESSION['title']?></b>
       <input type="checkbox" id="hamburger" />
       <label for="hamburger">
         <i class="fa-solid fa-bars"></i>
       </label>
       <ul>
         <li>
-          <a href="dashboard.php" >Dashboard</a>
+          <a href="bookings.php" >Bookings</a>
         </li>
         <li>
             <a href="dashboard.php" class="">Departments</a>
@@ -98,13 +118,20 @@ function goBack() {
       </ul>
     </nav>
     <button class="back" onclick="goBack()"><- Back</button>
-    <h2 id="h11">Tickets Info. <?php echo $resD['name']?></h2>
+    <h2 id="h11">Tickets Info. <?php if(isset($_GET['id'])){ echo $resD['name'];}?></h2>
 
    <!-- query -->
    <div class="query">
         <form action="#" method="get">
             <a for="date">Specify by date</a>
             <input type="date" name="date" id="date" required>
+            <input type="hidden" name="id" value=<?php echo "$id"?>>
+            <button name="view" type="submit">View</button>
+        </form>
+
+        <form action="#" method="get">
+            <a for="date">Search by customer's name, contact or event </a>
+            <input type="text" name="name" id="date" required>
             <input type="hidden" name="id" value=<?php echo "$id"?>>
             <button name="view" type="submit">View</button>
         </form>
@@ -127,11 +154,33 @@ function goBack() {
             <th>No. of tickets</th>
             <th>Date</th>
             <th>Contact</th>
+            <?php 
+             if($title == "accountant"){
+              echo '
+              <th>Price (GHc)</th>
+              ';
+             }
+             else{
+              echo ' <th></th>';
+             }
+            ?>
+            
         </tr>
 
         <?php
           
           while($res = mysqli_fetch_assoc($query)){
+            $ctype;
+            
+            if($title == "accountant"){
+             $ctype = 25*$res['numberoftickets'];
+
+             $total = $ctype + $total;
+
+            }
+            else{
+               $ctype = '<a href="ticket/index.php?customer='.$res['name'].'&department='.$res['department'].'&numberoftickets='.$res['numberoftickets'].'&date='.$res['date'].'&ticketid='.$res['ticket_id'].'">View</a>';
+            }
 
             echo '
                 <tr>
@@ -141,8 +190,15 @@ function goBack() {
                       <td>'.$res['numberoftickets'].'</td>
                       <td>'.$res['date'].'</td>
                       <td>'.$res['contact'].'</td>
+                      <td>'.$ctype.'</td>
                   </tr>
                 ';
+          }
+
+          if($title == "accountant"){
+            echo '<tr>
+            <td><b>Total: GHc'.$total.'</b></td></tr>
+            ';
           }
 
         ?>
@@ -151,6 +207,8 @@ function goBack() {
 
         
     </table>
+    <center id="hide3" style="margin-top: 10px;"><button  style="width:90px; height:30px; border:none; color:white; background-color:blue; border-radius:5px" onclick="printDiv()">Print</button></center>
+    
     </div>
     
   

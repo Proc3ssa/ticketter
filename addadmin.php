@@ -39,7 +39,7 @@
             <label for="title">Title</label><p></p>
             <select name="title" required>
                 <option value="">--select--</option>
-                <option value="supervisor">Supervisor</option>
+                <option value="supervisor">Administartor</option>
                 <option value="accountant">Accountant</option>
                 <option value="security">Security</option>
             </select>
@@ -61,7 +61,7 @@
                 $email = $_POST['email'];
                 $title = $_POST['title'];
                 $password = $_POST['password'];
-                $id = rand(0,9);
+                $id = rand(999,10000);
 
                 $SELECT = "SELECT count(*) as adin from admin where email='$email' and password='$password'";
 

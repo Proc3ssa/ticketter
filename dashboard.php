@@ -65,9 +65,22 @@
 
     <?php 
       if($title == "security"){
+
+        header('location: tickets.php');
         echo '
         <style>
         .shide{display:none}
+        
+        </style>
+        ';
+      }
+
+      if($title == "accountant"){
+
+       
+        echo '
+        <style>
+        .ahide{display:none}
         
         </style>
         ';
@@ -196,11 +209,21 @@
       </label>
       <ul>
         <li>
-          <a href="#home" class="active">Events</a>
+          <a href="#home" class="active ahide">Events</a>
         </li>
+         
+        <?php 
+           if($title == "accountant"){
 
+            echo '
+               <li>
+          <a href="tickets.php">Tickets Transactions</a>
+        </li>
+            ';
+           }
+        ?>
 
-        <li>
+        <li class="ahide">
           <a href="bookings.php">Bookings</a>
         </li>
 
@@ -212,15 +235,15 @@
         } 
         ?> 
 
-       <li class="shide">
-          <a href="users.php">Customers</a>
+       <li class="shide ahide">
+          <a href="users.php">Tickets</a>
         </li>
         
       </ul>
     </nav>
-    <h2>Events</h2>
+    <h2 class="ahide">Events</h2>
     
-    <div class="departments">
+    <div class="departments ahide">
 
     <?php
    

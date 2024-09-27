@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
+  `title` varchar(20) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -37,9 +38,12 @@ CREATE TABLE `admin` (
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` VALUES
-(0,'admin2@gmail.com','11111'),
-(1,'admin@tickets.com','11111'),
-(4,'pro@g.com','11111');
+(0,NULL,'admin2@gmail.com','11111'),
+(1,'Administrator','admin@tickets.com','11111'),
+(4,NULL,'pro@g.com','11111'),
+(7,'security','security@gmail.com','11111'),
+(8,'supervisor','super@gmail.com','11111'),
+(3290,'accountant','accountant@gmail.com','11111');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,8 +58,8 @@ CREATE TABLE `booking` (
   `department` varchar(40) DEFAULT NULL,
   `Customer` varchar(50) DEFAULT NULL,
   `Date` date DEFAULT NULL,
-  `Time` time DEFAULT NULL,
-  `status` varchar(30) DEFAULT NULL,
+  `Time` varchar(10) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
   `contact` varchar(40) DEFAULT NULL,
   `id` int(10) unsigned zerofill NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -68,9 +72,9 @@ CREATE TABLE `booking` (
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
 INSERT INTO `booking` VALUES
-('Marriage Registry','test1','2024-09-26','20:52:00','Approved','test@gmail.com',0000004784),
-('Marriage Registry','Tester','2024-09-22','23:53:00','Declined','pros3sa@gmail.com',0000003189),
-('Dome','Tester','2024-09-17','23:30:00','Pending Approval','pros3sa@gmail.com',0000008967);
+('Marriage Registry','Tester','2024-09-25','6pm-11pm','Pending Approval','pros3sa@gmail.com',0000004027),
+('Resturant','Tester','2024-09-23','6pm-11pm','Pending Approval','pros3sa@gmail.com',0000002130),
+('Resturant','Tester','2024-09-20','6pm-11pm','The place is already booked','pros3sa@gmail.com',0000003952);
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-21 22:24:52
+-- Dump completed on 2024-09-25  7:49:26
